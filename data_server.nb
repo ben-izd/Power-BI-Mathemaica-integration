@@ -1,0 +1,56 @@
+generateJSON[data_, headers_ : {}] := 
+ Module[{tHeaders, tdata, firstRow, output},
+  tHeaders = headers;
+  firstRow = First@data;
+  
+  (* convert data\datetime and Missing to javascript equivalent *)
+  tdata = 
+   data /. {d_DateObject :> DateString[d, "ISODateTime"], _Missing -> 
+      "null"};
+  
+  
+  (* if headers length doesnt match data length, 
+  generate header names *)
+  If[Length@firstRow != Length@tHeaders, 
+   tHeaders = Array["C" <> ToString@# &, Length@firstRow]];
+  
+  output = 
+   ExportString[
+    AssociationThread[tHeaders[[;; Length@#]], #] & /@ tdata, "JSON", 
+    "Compact" -> True];
+  
+  (* remove double quotes around javascript generated date type *)
+  Return@StringReplace[output, "\"null\"" -> "null"]
+  (*Return@StringReplace[output,{"\"new Date("~~Shortest[d__]~~
+  ")\""\[RuleDelayed]"new Date("<>d<>")"}];*)
+  ]
+
+setupJSONServer[data_, options___] := Module[{headers, port},
+   
+   {headers, port} = 
+    Values[Association[options][[{Key["Headers"], Key["Port"]}]]];
+   
+   If[MissingQ@headers, headers = {}];
+   If[MissingQ@port, port = 39000];
+   
+   (* close any existing port runned by mathematica *)
+   Close@SelectFirst[Sockets[], #["DestinationPort"] == port &] // 
+    Quiet;
+   
+   Return[SocketListen[port, Function[{assoc},
+       Module[{client = assoc["SourceSocket"], answer, output},
+        
+        answer = generateJSON[data, headers];
+        
+        Print[answer];
+        
+        output = "HTTP/1.1 200 OK" <>
+          "\r\nServer: Mathematica/" <> ToString@$VersionNumber <>
+          "\r\nContent-Type: application/json" <>
+          "\r\nDate: " <> DateString[TimeZone -> 0] <> " GMT" <>
+          "\r\nContent-Length: " <> ToString@StringLength@answer <>
+          "\r\n\r\n" <> answer;
+        WriteString[client, output];
+        
+        ]
+       ]]["Socket"]]];
