@@ -1,7 +1,7 @@
 # Mathematica integration with Microsoft Power BI
 Since 2018 Microsoft Power BI has the ability to connect with R and python. Now you can use Mathematica to create visualization inside Power BI or send data from Mathematica to Power BI. This repository consists of two code:
-- ![`viz_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/viz_server.nb) to use Mathematica visualization inside Power BI
-- ![`data_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/data_server.nb) to send Mathematica data to Power BI
+- [`viz_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/viz_server.nb) to use Mathematica visualization inside Power BI
+- [`data_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/data_server.nb) to send Mathematica data to Power BI
 
 
 ## How to send Mathematica Plots/Visualization to Microsoft Power BI
@@ -18,7 +18,7 @@ Power BI supports many data sources, we could either use python or a web interfa
 ## Setup
 Before starting, make sure the python Power BI uses, is the correct one by going to `File` > `Options and Settings` > `Options` > `Python Scripting`
 
-Either download ![`viz_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/viz_server.nb) or copy the code and evaluate them. Now you'll have a local server running on port 38000 (you can change it to any number you like as long as it's accessible)
+Either download [`viz_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/viz_server.nb) or copy the code and evaluate them. Now you'll have a local server running on port 38000 (you can change it to any number you like as long as it's accessible)
 
 Inside Power BI insert a new `Python Visual`.
 
@@ -98,7 +98,7 @@ If your script failed to evaluate, error messages will be sent as images to Powe
 ## Setup
 We are using the web interface to load a JSON table, you need to enable a preview feature to load JSON data as a table by going to `File` > `Options and Settings` > `Options` > `Preview features`, enable `Json Table Inference`.
 
-Either download or copy the ![`data_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/data_server.nb) code and evaluate them. Use the following function to create a JSON data source:
+Either download or copy the [`data_server.nb`](https://github.com/beny74483/Power-BI-Mathemaica-integeration/blob/main/data_server.nb) code and evaluate them. Use the following function to create a JSON data source:
 ```mathematica
 sendToPowerBI[data, headers]
 ```
