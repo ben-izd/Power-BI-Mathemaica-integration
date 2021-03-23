@@ -27,7 +27,7 @@ parse[text_String] :=
   ]
 
 
-listener = SocketListen[38000, Function[{assoc},
+server = SocketListen[38000, Function[{assoc},
     Module[{client = assoc["SourceSocket"], imgData, output, data, 
       evalData},
      
@@ -37,14 +37,11 @@ listener = SocketListen[38000, Function[{assoc},
      (* evaluate script *)
      evalData = EvaluationData[data = parse@assoc["Data"];];
      
-     (*StringRiffle[#,"\n"]&@Text/@*)
-     
      (* check whether the evaluation was successful *)
      If[Not@evalData["Success"], 
       data = Column[{Text[Style["Error", 30]], 
          Column[Rasterize /@ 
            DeleteDuplicates@evalData["MessagesText"]]}]];
-     
      
      imgData = 
       StringReplace[#, "\n" -> ""] &@
@@ -62,4 +59,4 @@ listener = SocketListen[38000, Function[{assoc},
      
      ]]];
 
-listener["Socket"]
+server["Socket"]
