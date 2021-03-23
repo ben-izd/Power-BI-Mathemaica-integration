@@ -21,8 +21,6 @@ generateJSON[data_, headers_ : {}] :=
   
   (* remove double quotes around javascript generated date type *)
   Return@StringReplace[output, "\"null\"" -> "null"]
-  (*Return@StringReplace[output,{"\"new Date("~~Shortest[d__]~~
-  ")\""\[RuleDelayed]"new Date("<>d<>")"}];*)
   ]
 
 setupJSONServer[data_, options___] := Module[{headers, port},
