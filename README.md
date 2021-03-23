@@ -1,6 +1,3 @@
-# Power-BI-Mathematica-integration
-Use Mathematica visualization capabilities inside Power BI.
-
 # Mathematica integration with Microsoft Power BI
 Since 2018 Microsoft Power BI has the ability to connect with R and python. Now you can use Mathematica to create visualization inside Power BI or send data directly from Mathematica to Power BI. This repository consists of two code:
 - `viz_server.nb` to use Mathematica visualization inside Power BI
