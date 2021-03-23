@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 import json
 from urllib import request
 
-# Change this section to your taste
+# Change this section
 PORT = 38000
 
 mathematica_code =  'ListLinePlot[Flatten[arg1]]'
