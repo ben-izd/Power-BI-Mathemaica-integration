@@ -66,11 +66,11 @@ Mathematica will receive the request and will evaluate `script` with the data pr
 
 The result of our sample code is:
 
-![](https://i.imgur.com/Pf4oIrI.png)
+![](https://i.imgur.com/tsCI7er.png)
 
 You could use only the script part without providing any `data`:
 
-![](https://i.imgur.com/Q4S9J0P.png)
+![](https://i.imgur.com/0K8Zh1H.png)
 
 ### Example 2 - Clustering
 Use mathematica `FindClusters` to find clusters for `price` and `quantity` fields:
@@ -83,7 +83,7 @@ Use mathematica `FindClusters` to find clusters for `price` and `quantity` field
 ## Possible Issues
 If your script failed to evaluate, error messages will be sent as images to Power BI. Here you see the result of plotting `Sin[x]/0`:
 
-![](https://i.imgur.com/5A84u5J.png)
+![](https://i.imgur.com/FUy1Wxa.png)
 
 
 # Send Mathematica data to Microsoft Power BI
