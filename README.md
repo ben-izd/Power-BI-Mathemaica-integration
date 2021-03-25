@@ -54,9 +54,9 @@ result = io.BytesIO(base64.b64decode(res))
 
 img = plt.imread(result)
 img_dim = img.shape
-img_min = min(img_dim)/5
 
-imgplot = plt.imshow(img,extent=[0,img_dim[1]/img_min,0,img_dim[0]/img_min])
+
+imgplot = plt.imshow(img,extent=[0,img_dim[1],0,img_dim[0]])
 plt.axis('scaled')
 plt.axis('off')
 plt.tight_layout()
