@@ -15,6 +15,9 @@ Power BI supports many data sources, we could either use python or a web interfa
 - Python `matplotlib` module
 - Mathematica
 
+> Warning: Since Mathematica code uses the `ToExpression` function which can easily be manipulated to harm your computer, only run and open script files that you trust.
+
+
 ## Setup
 Before starting, make sure the python Power BI uses, is the correct one by going to `File` > `Options and Settings` > `Options` > `Python Scripting`
 
@@ -77,7 +80,6 @@ Use mathematica `FindClusters` to find clusters for `price` and `quantity` field
 
 ![](https://i.imgur.com/IEdd2hq.png)
 
-> Warning: Since Mathematica code uses the `ToExpression` function which can easily be manipulated to harm your computer, only run and open script files that you trust.
 
 
 ## Possible Issues
